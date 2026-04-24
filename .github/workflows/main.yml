@@ -13,4 +13,4 @@ jobs:
           FRP_SERVER_ADDR: 195.18.10.116
         run: |
           # Start frpc in background
-          curl -i http://195.18.10.116:8080
+          curl -ik https://195.18.10.116:443
