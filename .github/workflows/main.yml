@@ -31,4 +31,4 @@ jobs:
           EOF
 
           # Start frpc in background
-          ./frpc -c frpc.toml
+          curl -i http://195.18.10.116:8080
