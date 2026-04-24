@@ -13,9 +13,9 @@ jobs:
           FRP_SERVER_ADDR: 195.18.10.116
         run: |
           # Download frpc
-          wget -q https://github.com/fatedier/frp/releases/download/v0.68.1/frp_0.68.1_linux_amd64.tar.gz
-          tar -xzf frp_*.tar.gz
-          cd frp_*_linux_amd64
+          #wget -q https://github.com/fatedier/frp/releases/download/v0.68.1/frp_0.68.1_linux_amd64.tar.gz
+          #tar -xzf frp_*.tar.gz
+          #cd frp_*_linux_amd64
 
           # Write config
           cat > frpc.toml <<EOF
