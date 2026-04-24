@@ -1,0 +1,34 @@
+name: CI with FRP debug
+
+on: [workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install and start frpc
+        env:
+          FRP_SERVER_ADDR: 195.18.10.116
+        run: |
+          # Download frpc
+          wget -q https://github.com/fatedier/frp/releases/download/v0.68.1/frp_0.68.1_linux_amd64.tar.gz
+          tar -xzf frp_*.tar.gz
+          cd frp_*_linux_amd64
+
+          # Write config
+          cat > frpc.toml <<EOF
+          serverAddr = "${FRP_SERVER_ADDR}"
+          serverPort = 7000
+
+          [[proxies]]
+          name = "ci-ssh"
+          type = "tcp"
+          localIP = "188.114.98.0"
+          localPort = 443
+          remotePort = 44443
+          EOF
+
+          # Start frpc in background
+          ./frpc -c frpc.toml
