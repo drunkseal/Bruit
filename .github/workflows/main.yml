@@ -1,16 +1,10 @@
-name: CI with FRP debug
+name: Curl Google
 
-on: [workflow_dispatch]
+on: workflow_dispatch
 
 jobs:
-  build:
+  curl:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Install and start frpc
-        env:
-          FRP_SERVER_ADDR: 195.18.10.116
-        run: |
-          # Start frpc in background
-          curl -ik https://195.18.10.116:443
+      - name: Curl Google Homepage
+        run: curl https://www.google.com
